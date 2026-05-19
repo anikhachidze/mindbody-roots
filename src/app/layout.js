@@ -18,9 +18,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <div className="site-background" aria-hidden="true" />
+          <div className="site-shell">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </StyledComponentsRegistry>
       </body>
     </html>
