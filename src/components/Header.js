@@ -47,7 +47,11 @@ const Mark = styled.span`
   display: grid;
   place-items: center;
   color: white;
-  background: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.accent});
+  background: linear-gradient(
+    135deg,
+    ${theme.colors.primary},
+    ${theme.colors.accent}
+  );
   box-shadow: ${theme.shadows.soft};
 `;
 
@@ -93,7 +97,9 @@ export default function Header() {
           <Nav aria-label="Primary navigation">
             <NavLink href="/blog">{copy.nav.blog}</NavLink>
             <NavLink href="/quotes">{copy.nav.quotes}</NavLink>
-            <NavLink href="/recommendations">{copy.nav.recommendations}</NavLink>
+            <NavLink href="/recommendations">
+              {copy.nav.recommendations}
+            </NavLink>
             <NavLink href="/about">{copy.nav.about}</NavLink>
           </Nav>
           <PreferenceControls />

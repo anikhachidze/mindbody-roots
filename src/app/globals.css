@@ -50,8 +50,8 @@ body {
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(180deg, rgba(73, 186, 194, 0.44), rgba(251, 250, 246, 0.52)),
-    linear-gradient(135deg, rgba(47, 125, 92, 0.08), rgba(215, 169, 79, 0.06)),
+    linear-gradient(180deg, rgba(73, 186, 194, 0.44), rgba(58, 189, 203, 0.52)),
+    linear-gradient(135deg, rgba(102, 194, 189, 0.08), rgba(79, 215, 174, 0.06)),
     url("/mypicture.JPG") center center / cover no-repeat;
   filter: saturate(1.02) contrast(1.02) brightness(0.94);
   transform: scale(1.02);
