@@ -1,0 +1,32 @@
+{
+  "name": "mindbody-roots",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A calm Next.js health blog and affiliate landing page about mind-body habits.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "health",
+    "wellness",
+    "blog",
+    "affiliate"
+  ],
+  "author": "Ani Khachidze <ani@khachidze.eu>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^13.5.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.13"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^13.5.11"
+  }
+}
