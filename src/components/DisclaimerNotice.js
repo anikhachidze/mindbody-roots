@@ -3,7 +3,8 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { useLocalizedSiteCopy } from "@/context/ContentContext";
+import { useContent } from "@/context/ContentContext";
+import { localize } from "@/lib/i18n";
 
 const Notice = styled.aside`
   border: 1px solid ${theme.colors.border};
@@ -20,11 +21,12 @@ const Notice = styled.aside`
 
 export default function DisclaimerNotice() {
   const { locale } = usePreferences();
-  const copy = useLocalizedSiteCopy(locale).common;
+  const { homePage } = useContent();
 
   return (
     <Notice>
-      <strong>{copy.healthDisclaimerTitle}</strong> {copy.healthDisclaimerBody}
+      <strong>{localize(homePage.disclaimer.title, locale)}</strong>{" "}
+      {localize(homePage.disclaimer.body, locale)}
     </Notice>
   );
 }

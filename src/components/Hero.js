@@ -4,7 +4,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { useLocalizedSiteCopy } from "@/context/ContentContext";
+import { useContent } from "@/context/ContentContext";
+import { localize } from "@/lib/i18n";
 
 const Wrap = styled.section`
   max-width: 1160px;
@@ -102,26 +103,122 @@ const Mini = styled.p`
   margin: 20px 0 0;
 `;
 
+const MediaShell = styled.div`
+  margin-top: 24px;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid ${theme.colors.border};
+  background: rgba(0, 0, 0, 0.08);
+
+  img,
+  video,
+  iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  iframe,
+  video {
+    min-height: 280px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+`;
+
+const Caption = styled.p`
+  color: ${theme.colors.muted};
+  line-height: 1.6;
+  margin: 12px 0 0;
+  font-size: 0.94rem;
+`;
+
+function ActionLink({ href, secondary = false, children }) {
+  const isExternal = /^https?:\/\//i.test(href || "");
+  if (isExternal) {
+    return (
+      <Button as="a" href={href} target="_blank" rel="noopener noreferrer" $secondary={secondary}>
+        {children}
+      </Button>
+    );
+  }
+  return (
+    <Button href={href} $secondary={secondary}>
+      {children}
+    </Button>
+  );
+}
+
+function renderVideoUrl(url, title) {
+  if (!url) return null;
+  if (url.includes("youtube.com/watch?v=")) {
+    const embed = url.replace("watch?v=", "embed/");
+    return <iframe src={embed} title={title || "MindBody Roots video"} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />;
+  }
+  if (url.includes("youtu.be/")) {
+    const embed = `https://www.youtube.com/embed/${url.split("youtu.be/")[1].split("?")[0]}`;
+    return <iframe src={embed} title={title || "MindBody Roots video"} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />;
+  }
+  if (url.includes("vimeo.com/")) {
+    const embed = `https://player.vimeo.com/video/${url.split("vimeo.com/")[1].split("?")[0]}`;
+    return <iframe src={embed} title={title || "MindBody Roots video"} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />;
+  }
+  if (/\.(mp4|webm|ogg)(\?|$)/i.test(url)) {
+    return (
+      <video controls>
+        <source src={url} />
+      </video>
+    );
+  }
+  return null;
+}
+
 export default function Hero() {
   const { locale } = usePreferences();
-  const copy = useLocalizedSiteCopy(locale).hero;
+  const { homePage } = useContent();
+  const hero = homePage.hero;
+  const title = localize(hero.title, locale);
+  const lead = localize(hero.lead, locale);
+  const badge = localize(hero.badge, locale);
+  const primaryLabel = localize(hero.primaryLabel, locale);
+  const secondaryLabel = localize(hero.secondaryLabel, locale);
+  const quote = localize(hero.quote, locale);
+  const cardBody = localize(hero.cardBody, locale);
+  const mediaCaption = localize(hero.mediaCaption, locale);
+  const embeddedVideo = renderVideoUrl(hero.videoUrl, title);
 
   return (
     <Wrap>
       <div>
-        <Badge>{copy.badge}</Badge>
-        <H1>{copy.title}</H1>
-        <Lead>{copy.lead}</Lead>
+        {badge && <Badge>{badge}</Badge>}
+        <H1>{title}</H1>
+        <Lead>{lead}</Lead>
         <Actions>
-          <Button href="/blog">{copy.primary}</Button>
-          <Button href="/recommendations" $secondary>
-            {copy.secondary}
-          </Button>
+          <ActionLink href={hero.primaryUrl || "/blog"}>{primaryLabel}</ActionLink>
+          <ActionLink href={hero.secondaryUrl || "/recommendations"} secondary>
+            {secondaryLabel}
+          </ActionLink>
         </Actions>
       </div>
       <Card>
-        <Quote>“{copy.quote}”</Quote>
-        <Mini>{copy.cardBody}</Mini>
+        <Quote>“{quote}”</Quote>
+        <Mini>{cardBody}</Mini>
+        {(hero.media?.url || embeddedVideo) && (
+          <>
+            <MediaShell>
+              {embeddedVideo || (hero.media?.mime?.startsWith("video/") ? (
+                <video controls>
+                  <source src={hero.media.url} type={hero.media.mime} />
+                </video>
+              ) : (
+                <img src={hero.media.url} alt={title || "MindBody Roots hero"} />
+              ))}
+            </MediaShell>
+            {mediaCaption && <Caption>{mediaCaption}</Caption>}
+          </>
+        )}
       </Card>
     </Wrap>
   );

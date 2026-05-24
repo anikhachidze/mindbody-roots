@@ -17,6 +17,15 @@ const Card = styled.article`
   min-height: 100%;
 `;
 
+const Image = styled.img`
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  border: 1px solid ${theme.colors.border};
+`;
+
 const Category = styled.p`
   margin: 0 0 12px;
   color: ${theme.colors.accent};
@@ -69,6 +78,7 @@ export default function ProductCard({ product }) {
 
   return (
     <Card>
+      {product.image?.url && <Image src={product.image.url} alt={localize(product.title, locale)} />}
       <Category>{localize(product.category, locale)}</Category>
       <Title>{localize(product.title, locale)}</Title>
       <Desc>{localize(product.description, locale)}</Desc>

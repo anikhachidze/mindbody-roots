@@ -7,8 +7,10 @@ import BlogCard from "@/components/BlogCard";
 import QuoteCard from "@/components/QuoteCard";
 import ProductCard from "@/components/ProductCard";
 import DisclaimerNotice from "@/components/DisclaimerNotice";
+import HomeVideoSection from "@/components/HomeVideoSection";
 import { usePreferences } from "@/context/PreferencesContext";
-import { useContent, useLocalizedSiteCopy } from "@/context/ContentContext";
+import { useContent } from "@/context/ContentContext";
+import { localize } from "@/lib/i18n";
 
 const Section = styled.section`
   max-width: 1160px;
@@ -39,30 +41,34 @@ const Two = styled.div`
 
 export default function Home() {
   const { locale } = usePreferences();
-  const sections = useLocalizedSiteCopy(locale).sections;
-  const { posts, quotes, products } = useContent();
+  const { homePage } = useContent();
+  const featured = homePage.featuredArticlesSection;
+  const tools = homePage.recommendationsSection;
 
   return (
     <>
       <Hero />
       <Section>
-        <SectionTitle eyebrow={sections.featuredEyebrow} title={sections.featuredTitle}>
-          {sections.featuredText}
+        <SectionTitle eyebrow={localize(featured.eyebrow, locale)} title={localize(featured.title, locale)}>
+          {localize(featured.body, locale)}
         </SectionTitle>
-        <Grid>{posts.map((post) => <BlogCard key={post.slug} post={post} />)}</Grid>
+        <Grid>{homePage.featuredArticles.map((post) => <BlogCard key={post.slug} post={post} />)}</Grid>
       </Section>
+      {homePage.spotlightQuote && (
+        <Section>
+          <Two>
+            <QuoteCard quote={homePage.spotlightQuote} />
+            <DisclaimerNotice />
+          </Two>
+        </Section>
+      )}
       <Section>
-        <Two>
-          <QuoteCard quote={quotes[0]} />
-          <DisclaimerNotice />
-        </Two>
-      </Section>
-      <Section>
-        <SectionTitle eyebrow={sections.toolsEyebrow} title={sections.toolsTitle}>
-          {sections.toolsText}
+        <SectionTitle eyebrow={localize(tools.eyebrow, locale)} title={localize(tools.title, locale)}>
+          {localize(tools.body, locale)}
         </SectionTitle>
-        <Grid>{products.slice(0, 3).map((product) => <ProductCard key={product.title.en} product={product} />)}</Grid>
+        <Grid>{homePage.featuredProducts.map((product) => <ProductCard key={product.documentId || product.url} product={product} />)}</Grid>
       </Section>
+      <HomeVideoSection video={homePage.promoVideo} />
     </>
   );
 }

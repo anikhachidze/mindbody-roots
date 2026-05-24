@@ -23,6 +23,15 @@ const Card = styled.article`
   }
 `;
 
+const Cover = styled.img`
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  border: 1px solid ${theme.colors.border};
+`;
+
 const Category = styled.p`
   margin: 0 0 12px;
   color: ${theme.colors.primary};
@@ -61,6 +70,7 @@ export default function BlogCard({ post }) {
 
   return (
     <Card>
+      {post.coverImage?.url && <Cover src={post.coverImage.url} alt={localize(post.title, locale)} />}
       <Category>{localize(post.category, locale)}</Category>
       <Title>{localize(post.title, locale)}</Title>
       <Excerpt>{localize(post.excerpt, locale)}</Excerpt>
