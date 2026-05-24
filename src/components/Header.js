@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 import PreferenceControls from "@/components/PreferenceControls";
 
 const Shell = styled.header`
@@ -85,7 +85,7 @@ const Right = styled.div`
 
 export default function Header() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale];
+  const copy = useLocalizedSiteCopy(locale);
 
   return (
     <Shell>

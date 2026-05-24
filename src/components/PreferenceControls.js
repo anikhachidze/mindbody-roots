@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Controls = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ const Label = styled.span`
 
 export default function PreferenceControls() {
   const { theme: currentTheme, locale, toggleTheme, toggleLocale } = usePreferences();
-  const copy = siteCopy[locale].controls;
+  const copy = useLocalizedSiteCopy(locale).controls;
 
   return (
     <Controls>

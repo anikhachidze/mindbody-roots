@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Notice = styled.aside`
   border: 1px solid ${theme.colors.border};
@@ -20,7 +20,7 @@ const Notice = styled.aside`
 
 export default function DisclaimerNotice() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
+  const copy = useLocalizedSiteCopy(locale).common;
 
   return (
     <Notice>

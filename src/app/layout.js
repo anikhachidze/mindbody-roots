@@ -2,6 +2,7 @@ import StyledComponentsRegistry from "@/styles/StyledComponentsRegistry";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PreferencesProvider } from "@/context/PreferencesContext";
+import { ContentProvider } from "@/context/ContentContext";
 import "./globals.css";
 
 export const metadata = {
@@ -20,12 +21,14 @@ export default function RootLayout({ children }) {
       <body>
         <StyledComponentsRegistry>
           <PreferencesProvider>
-            <div className="site-background" aria-hidden="true" />
-            <div className="site-shell">
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </div>
+            <ContentProvider>
+              <div className="site-background" aria-hidden="true" />
+              <div className="site-shell">
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </ContentProvider>
           </PreferencesProvider>
         </StyledComponentsRegistry>
       </body>

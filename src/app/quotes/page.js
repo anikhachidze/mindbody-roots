@@ -3,10 +3,9 @@
 import styled from "styled-components";
 import SectionTitle from "@/components/SectionTitle";
 import QuoteCard from "@/components/QuoteCard";
-import { quotes } from "@/data/quotes";
+import { useContent, useLocalizedSiteCopy } from "@/context/ContentContext";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
 
 const Page = styled.section`
   max-width: 1160px;
@@ -32,7 +31,8 @@ const Note = styled.p`
 
 export default function QuotesPage() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
+  const copy = useLocalizedSiteCopy(locale).common;
+  const { quotes } = useContent();
 
   return (
     <Page>

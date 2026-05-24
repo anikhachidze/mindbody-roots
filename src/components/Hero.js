@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Wrap = styled.section`
   max-width: 1160px;
@@ -33,7 +33,7 @@ const Badge = styled.p`
 
 const H1 = styled.h1`
   margin: 0;
-  font-size: clamp(3rem, 7vw, 5.9rem);
+  font-size: clamp(3rem, 4vw, 5.9rem);
   line-height: 0.95;
   letter-spacing: -0.055em;
 `;
@@ -62,9 +62,13 @@ const Button = styled(Link)`
   border-radius: ${theme.radii.pill};
   font-weight: 800;
   transition: 180ms ease;
-  background: ${({ $secondary }) => ($secondary ? "transparent" : theme.colors.primary)};
-  color: ${({ $secondary }) => ($secondary ? theme.colors.primaryDark : "white")};
-  border: 1px solid ${({ $secondary }) => ($secondary ? theme.colors.border : theme.colors.primary)};
+  background: ${({ $secondary }) =>
+    $secondary ? "transparent" : theme.colors.primary};
+  color: ${({ $secondary }) =>
+    $secondary ? theme.colors.primaryDark : "white"};
+  border: 1px solid
+    ${({ $secondary }) =>
+      $secondary ? theme.colors.border : theme.colors.primary};
 
   &:hover {
     transform: translateY(-2px);
@@ -100,7 +104,7 @@ const Mini = styled.p`
 
 export default function Hero() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].hero;
+  const copy = useLocalizedSiteCopy(locale).hero;
 
   return (
     <Wrap>

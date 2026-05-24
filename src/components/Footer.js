@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Shell = styled.footer`
   border-top: 1px solid ${theme.colors.border};
@@ -55,7 +55,7 @@ const Links = styled.div`
 
 export default function Footer() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale];
+  const copy = useLocalizedSiteCopy(locale);
 
   return (
     <Shell>

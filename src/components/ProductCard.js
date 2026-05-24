@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
 import { localize } from "@/lib/i18n";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Card = styled.article`
   background: ${theme.colors.surface};
@@ -65,7 +65,7 @@ const Note = styled.p`
 
 export default function ProductCard({ product }) {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
+  const copy = useLocalizedSiteCopy(locale).common;
 
   return (
     <Card>

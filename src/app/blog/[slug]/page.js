@@ -3,12 +3,10 @@
 import styled from "styled-components";
 import DisclaimerNotice from "@/components/DisclaimerNotice";
 import ProductCard from "@/components/ProductCard";
-import { getPostBySlug, posts } from "@/data/posts";
-import { products } from "@/data/products";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
+import { useContent, useLocalizedSiteCopy } from "@/context/ContentContext";
 import { localize } from "@/lib/i18n";
-import { siteCopy } from "@/content/siteCopy";
 
 const Article = styled.article`
   max-width: 880px;
@@ -66,8 +64,9 @@ const Products = styled.div`
 
 export default function BlogPostPage({ params }) {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
-  const post = getPostBySlug(params.slug);
+  const copy = useLocalizedSiteCopy(locale).common;
+  const { posts, products } = useContent();
+  const post = posts.find((item) => item.slug === params.slug);
 
   if (!post) {
     return (

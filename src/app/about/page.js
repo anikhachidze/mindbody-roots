@@ -5,7 +5,7 @@ import SectionTitle from "@/components/SectionTitle";
 import DisclaimerNotice from "@/components/DisclaimerNotice";
 import { theme } from "@/styles/theme";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Page = styled.section`
   max-width: 880px;
@@ -23,7 +23,7 @@ const Copy = styled.div`
 
 export default function AboutPage() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
+  const copy = useLocalizedSiteCopy(locale).common;
 
   return (
     <Page>

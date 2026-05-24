@@ -80,6 +80,12 @@ export const siteCopy = {
       affiliateDisclosureTitle: "How product links work.",
       affiliateDisclosureBody:
         "As an Amazon Associate, this site may earn from qualifying purchases. This does not affect the price you pay. Current links are placeholders and should be replaced with real affiliate URLs before launch.",
+      affiliateDisclosureStrong:
+        "As an Amazon Associate, I earn from qualifying purchases.",
+      affiliateDisclosureExtra1:
+        "Some links on MindBody Roots may be affiliate links. If you click a link and make a purchase, this site may earn a small commission. This does not affect the price you pay.",
+      affiliateDisclosureExtra2:
+        "Recommendations should be based on relevance to the article topic, usefulness, and fit for healthy routines. Before launch, replace placeholder Amazon search links with your real Amazon Associates affiliate URLs.",
       disclaimerEyebrow: "Disclaimer",
       disclaimerTitle: "Educational content, not medical advice.",
       disclaimerBody:
@@ -176,6 +182,12 @@ export const siteCopy = {
       affiliateDisclosureTitle: "როგორ მუშაობს პროდუქტის ბმულები.",
       affiliateDisclosureBody:
         "როგორც Amazon Associate, ამ საიტს შეიძლება ჰქონდეს შემოსავალი კვალიფიციური შესყიდვებიდან. ეს არ ცვლის ფასს, რომელსაც იხდი. მიმდინარე ბმულები placeholder-ებია და გამოქვეყნებამდე უნდა შეიცვალოს რეალური affiliate URL-ებით.",
+      affiliateDisclosureStrong:
+        "Amazon Associate-ის სახით, მე ვიღებ საკომისიოს შესაბამისი შესყიდვებიდან.",
+      affiliateDisclosureExtra1:
+        "შესაბამისად, საიტზე არსებული ზოგიერთი ბმული affiliate ბმულია. თუ დააჭერ ბმულს და შეიძენ პროდუქტს, საიტს შეიძლება მცირე საკომისიო დაერიცხოს. ეს არ ცვლის იმ ფასს, რასაც გადაიხდი.",
+      affiliateDisclosureExtra2:
+        "რეკომენდაციები უნდა ეფუძნებოდეს სტატიის თემას, სარგებლიანობას და ჯანმრთელ რუტინებთან შესაბამისობას. გამოქვეყნებამდე ჩაანაცვლე placeholder Amazon ბმულები რეალური Amazon Associates URL-ებით.",
       disclaimerEyebrow: "დისკლეიმერი",
       disclaimerTitle: "საგანმანათლებლო კონტენტი, არა სამედიცინო რჩევა.",
       disclaimerBody:

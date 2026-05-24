@@ -4,9 +4,8 @@ import styled from "styled-components";
 import SectionTitle from "@/components/SectionTitle";
 import BlogCard from "@/components/BlogCard";
 import DisclaimerNotice from "@/components/DisclaimerNotice";
-import { posts } from "@/data/posts";
+import { useContent, useLocalizedSiteCopy } from "@/context/ContentContext";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
 
 const Page = styled.section`
   max-width: 1160px;
@@ -31,7 +30,8 @@ const NoticeWrap = styled.div`
 
 export default function BlogPage() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
+  const copy = useLocalizedSiteCopy(locale).common;
+  const { posts } = useContent();
 
   return (
     <Page>

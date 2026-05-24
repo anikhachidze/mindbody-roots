@@ -7,11 +7,8 @@ import BlogCard from "@/components/BlogCard";
 import QuoteCard from "@/components/QuoteCard";
 import ProductCard from "@/components/ProductCard";
 import DisclaimerNotice from "@/components/DisclaimerNotice";
-import { posts } from "@/data/posts";
-import { quotes } from "@/data/quotes";
-import { products } from "@/data/products";
 import { usePreferences } from "@/context/PreferencesContext";
-import { siteCopy } from "@/content/siteCopy";
+import { useContent, useLocalizedSiteCopy } from "@/context/ContentContext";
 
 const Section = styled.section`
   max-width: 1160px;
@@ -42,14 +39,15 @@ const Two = styled.div`
 
 export default function Home() {
   const { locale } = usePreferences();
-  const copy = siteCopy[locale].common;
+  const sections = useLocalizedSiteCopy(locale).sections;
+  const { posts, quotes, products } = useContent();
 
   return (
     <>
       <Hero />
       <Section>
-        <SectionTitle eyebrow={copy.featuredEyebrow} title={copy.featuredTitle}>
-          {copy.featuredText}
+        <SectionTitle eyebrow={sections.featuredEyebrow} title={sections.featuredTitle}>
+          {sections.featuredText}
         </SectionTitle>
         <Grid>{posts.map((post) => <BlogCard key={post.slug} post={post} />)}</Grid>
       </Section>
@@ -60,8 +58,8 @@ export default function Home() {
         </Two>
       </Section>
       <Section>
-        <SectionTitle eyebrow={copy.toolsEyebrow} title={copy.toolsTitle}>
-          {copy.toolsText}
+        <SectionTitle eyebrow={sections.toolsEyebrow} title={sections.toolsTitle}>
+          {sections.toolsText}
         </SectionTitle>
         <Grid>{products.slice(0, 3).map((product) => <ProductCard key={product.title.en} product={product} />)}</Grid>
       </Section>
