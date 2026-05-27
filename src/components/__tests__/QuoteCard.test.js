@@ -15,9 +15,7 @@ jest.mock('@/lib/i18n', () => ({
 
 describe('QuoteCard', () => {
   it('renders quote and author', () => {
-    render(
-      <QuoteCard quote={{ text: { en: 'Test quote' }, author: { en: 'Tester' } }} />,
-    );
+    render(<QuoteCard quote={{ text: { en: 'Test quote' }, author: { en: 'Tester' } }} />);
 
     expect(screen.getByText(/Test quote/)).toBeInTheDocument();
     expect(screen.getByText(/Tester/)).toBeInTheDocument();

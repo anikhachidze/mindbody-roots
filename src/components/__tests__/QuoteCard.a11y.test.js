@@ -17,7 +17,7 @@ jest.mock('@/lib/i18n', () => ({
 describe('QuoteCard accessibility', () => {
   it('has no detectable a11y violations', async () => {
     const { container } = render(
-      <QuoteCard quote={{ text: { en: 'Accessible quote' }, author: { en: 'Author' } }} />,
+      <QuoteCard quote={{ text: { en: 'Accessible quote' }, author: { en: 'Author' } }} />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
