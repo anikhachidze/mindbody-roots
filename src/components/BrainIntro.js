@@ -109,35 +109,25 @@ export default function BrainIntro() {
   const [isExiting, setIsExiting] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [BrainScene3D, setBrainScene3D] = useState(null);
-  const [debug, setDebug] = useState('mounting');
+  const [isMounted, setIsMounted] = useState(false);
   const { theme } = usePreferences();
 
   useEffect(() => {
-    try {
-      const hasSeenIntro = localStorage.getItem(introSeenKey);
-      if (!hasSeenIntro) {
-        setShowIntro(true);
-        setDebug('showing intro');
-      } else {
-        setDebug('already seen');
-      }
-    } catch (e) {
-      setDebug('error: ' + e.message);
+    setIsMounted(true);
+    const hasSeenIntro = localStorage.getItem(introSeenKey);
+    if (!hasSeenIntro) {
+      setShowIntro(true);
     }
   }, []);
 
   useEffect(() => {
-    if (showIntro) {
-      setDebug('loading 3D...');
+    if (showIntro && isMounted) {
       import("@/components/BrainScene3D").then((mod) => {
         setBrainScene3D(() => mod.default);
         setIsLoaded(true);
-        setDebug('3D loaded');
-      }).catch((e) => {
-        setDebug('3D error: ' + e.message);
       });
     }
-  }, [showIntro]);
+  }, [showIntro, isMounted]);
 
   const handleEnter = () => {
     setIsExiting(true);
@@ -147,13 +137,12 @@ export default function BrainIntro() {
     }, 600);
   };
 
-  if (!showIntro) {
-    return <div style={{position: 'fixed', top: 0, left: 0, padding: '10px', background: 'red', color: 'white', zIndex: 99999}}>DEBUG: {debug}</div>;
+  if (!showIntro || !isMounted) {
+    return null;
   }
 
   return (
     <Overlay $theme={theme} $isExiting={isExiting}>
-      <div style={{position: 'fixed', top: 0, right: 0, padding: '10px', background: 'green', color: 'white', zIndex: 99999}}>DEBUG: {debug}</div>
       <CanvasContainer>
         {isLoaded && BrainScene3D && <BrainScene3D theme={theme} />}
       </CanvasContainer>
