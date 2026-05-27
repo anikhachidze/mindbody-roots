@@ -165,7 +165,11 @@ function Brain({ theme }) {
 
 export default function BrainScene3D({ theme }) {
   return (
-    <Canvas shadows>
+    <Canvas
+      shadows
+      style={{ width: '100%', height: '100%', display: 'block' }}
+      gl={{ preserveDrawingBuffer: true }}
+    >
       <Suspense fallback={null}>
         <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={50} />
         <ambientLight intensity={theme === "dark" ? 0.3 : 0.5} />

@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
-const BrainIntro = dynamic(() => import("@/components/BrainIntro"), {
+const BrainScene3D = dynamic(() => import("@/components/BrainScene3D"), {
   ssr: false,
 });
 
@@ -1071,6 +1071,7 @@ const CtaButton = styled(Link)`
 
 function IntroGate({ locale }) {
   const [visible, setVisible] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     try {
@@ -1079,6 +1080,12 @@ function IntroGate({ locale }) {
       setVisible(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (visible) {
+      setIsLoaded(true);
+    }
+  }, [visible]);
 
   function enter() {
     try {
@@ -1091,25 +1098,30 @@ function IntroGate({ locale }) {
 
   if (!visible) return null;
 
+  const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+
   return (
     <IntroOverlay
       role="dialog"
       aria-label={
-        locale === "ka" ? "MindBody Roots შესავალი" : "MindBody Roots intro"
+        locale === "ka" ? "გონების შესწავლა" : "Explore Your Mind"
       }
     >
-      <IntroButton type="button" onClick={enter}>
+      {isLoaded && (
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <BrainScene3D theme={theme} />
+        </div>
+      )}
+      <IntroButton type="button" onClick={enter} style={{ position: 'relative', zIndex: 10 }}>
         <Microcopy>
-          {locale === "ka" ? "იტვირთება 5 ფაზა" : "Loading 5 phases"}
+          {locale === "ka" ? "გამოიკვლიეთ თქვენი გონება" : "Explore Your Mind"}
         </Microcopy>
         <SeedMark aria-hidden="true" />
-        <Microcopy>
-          {locale === "ka" ? "დააკლიკე შესასვლელად" : "Click to enter"}
+        <Microcopy style={{ fontSize: '0.85rem', opacity: 0.8 }}>
+          {locale === "ka" ? "გადაათრიეთ ბრუნვისთვის • გადაახვიეთ მასშტაბირებისთვის" : "Drag to rotate • Scroll to zoom"}
         </Microcopy>
         <Microcopy>
-          {locale === "ka"
-            ? "ყურსასმენები სურვილისამებრ"
-            : "Headphones optional"}
+          {locale === "ka" ? "დააკლიკე შესასვლელად" : "Click to enter"}
         </Microcopy>
       </IntroButton>
     </IntroOverlay>
@@ -1412,10 +1424,8 @@ export default function ImmersiveHome() {
   }, [phases]);
 
   return (
-    <>
-      <BrainIntro />
-      <Page>
-        <IntroGate locale={locale} />
+    <Page>
+      <IntroGate locale={locale} />
       <Atmosphere aria-hidden="true" />
       <Hero id="arrive">
         <div>
@@ -1541,6 +1551,5 @@ export default function ImmersiveHome() {
         <CtaButton href={phases[4].href}>{phases[4].cta}</CtaButton>
       </FinalCta>
     </Page>
-    </>
   );
 }

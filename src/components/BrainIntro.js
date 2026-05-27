@@ -32,10 +32,18 @@ const Overlay = styled.div`
 `;
 
 const CanvasContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  > div, canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
 `;
 
 const Content = styled.div`
@@ -138,7 +146,9 @@ export default function BrainIntro() {
   };
 
   if (!showIntro || !isMounted) {
-    return null;
+    return <div style={{position: 'fixed', top: '10px', right: '10px', background: 'red', color: 'white', padding: '10px', zIndex: 99999, fontSize: '12px'}}>
+      BrainIntro: mounted={String(isMounted)}, showIntro={String(showIntro)}
+    </div>;
   }
 
   return (
