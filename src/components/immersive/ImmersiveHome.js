@@ -1,8 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import styled, { keyframes } from "styled-components";
+
+const BrainIntro = dynamic(() => import("@/components/BrainIntro"), {
+  ssr: false,
+});
+
 import BlogCard from "@/components/BlogCard";
 import ProductCard from "@/components/ProductCard";
 import QuoteCard from "@/components/QuoteCard";
@@ -1406,8 +1412,10 @@ export default function ImmersiveHome() {
   }, [phases]);
 
   return (
-    <Page>
-      <IntroGate locale={locale} />
+    <>
+      <BrainIntro />
+      <Page>
+        <IntroGate locale={locale} />
       <Atmosphere aria-hidden="true" />
       <Hero id="arrive">
         <div>
@@ -1533,5 +1541,6 @@ export default function ImmersiveHome() {
         <CtaButton href={phases[4].href}>{phases[4].cta}</CtaButton>
       </FinalCta>
     </Page>
+    </>
   );
 }
