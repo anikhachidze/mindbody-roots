@@ -28,14 +28,26 @@ const fallbackCarouselSlides = [
   {
     src: "",
     alt: "Golden breathing light",
-    title: { en: "Warm light, less pressure", ka: "თბილი სინათლე, ნაკლები დაძაბულობა" },
-    body: { en: "Rounded shapes, slow motion, and nature colors help the page feel safe before asking the visitor to read.", ka: "მრგვალი ფორმები, ნელი მოძრაობა და ბუნებრივი ფერები გვერდს უსაფრთხო და მშვიდ შეგრძნებას აძლევს." },
+    title: {
+      en: "Warm light, less pressure",
+      ka: "თბილი სინათლე, ნაკლები დაძაბულობა",
+    },
+    body: {
+      en: "Rounded shapes, slow motion, and nature colors help the page feel safe before asking the visitor to read.",
+      ka: "მრგვალი ფორმები, ნელი მოძრაობა და ბუნებრივი ფერები გვერდს უსაფრთხო და მშვიდ შეგრძნებას აძლევს.",
+    },
   },
   {
     src: "",
     alt: "Neural garden animation",
-    title: { en: "Brain-friendly reading rhythm", ka: "ტვინისთვის სასიამოვნო კითხვის რიტმი" },
-    body: { en: "Short chapters, soft contrast, and clear next steps reduce cognitive load and invite gentle curiosity.", ka: "მოკლე თავები, რბილი კონტრასტი და მკაფიო ნაბიჯები ამცირებს დატვირთვას და აჩენს მშვიდ ცნობისმოყვარეობას." },
+    title: {
+      en: "Brain-friendly reading rhythm",
+      ka: "ტვინისთვის სასიამოვნო კითხვის რიტმი",
+    },
+    body: {
+      en: "Short chapters, soft contrast, and clear next steps reduce cognitive load and invite gentle curiosity.",
+      ka: "მოკლე თავები, რბილი კონტრასტი და მკაფიო ნაბიჯები ამცირებს დატვირთვას და აჩენს მშვიდ ცნობისმოყვარეობას.",
+    },
   },
 ];
 
@@ -179,16 +191,34 @@ const IntroOverlay = styled.div`
   place-items: center;
   padding: 28px;
   background:
-    radial-gradient(circle at 50% 44%, rgba(240, 198, 110, 0.18), transparent 18rem),
-    radial-gradient(circle at 50% 58%, rgba(120, 195, 156, 0.22), transparent 24rem),
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(240, 198, 110, 0.18),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at 50% 58%,
+      rgba(120, 195, 156, 0.22),
+      transparent 24rem
+    ),
     linear-gradient(180deg, #fbfaf6 0%, #eee7d8 100%);
   color: #17211b;
-  transition: opacity 420ms ease, visibility 420ms ease;
+  transition:
+    opacity 420ms ease,
+    visibility 420ms ease;
 
   html[data-theme="dark"] & {
     background:
-      radial-gradient(circle at 50% 44%, rgba(240, 198, 110, 0.14), transparent 18rem),
-      radial-gradient(circle at 50% 58%, rgba(120, 195, 156, 0.18), transparent 24rem),
+      radial-gradient(
+        circle at 50% 44%,
+        rgba(240, 198, 110, 0.14),
+        transparent 18rem
+      ),
+      radial-gradient(
+        circle at 50% 58%,
+        rgba(120, 195, 156, 0.18),
+        transparent 24rem
+      ),
       linear-gradient(180deg, #07110d 0%, #132119 100%);
     color: #eef5ee;
   }
@@ -247,20 +277,48 @@ const Page = styled.div`
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 10%, rgba(240, 198, 110, 0.18), transparent 18rem),
-    radial-gradient(circle at 50% 30%, rgba(120, 195, 156, 0.16), transparent 24rem),
-    linear-gradient(180deg, rgba(10, 21, 16, 0.98) 0%, rgba(17, 35, 27, 0.96) 42%, rgba(247, 241, 229, 0.94) 100%);
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(240, 198, 110, 0.18),
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(120, 195, 156, 0.16),
+      transparent 24rem
+    ),
+    linear-gradient(
+      180deg,
+      rgba(10, 21, 16, 0.98) 0%,
+      rgba(17, 35, 27, 0.96) 42%,
+      rgba(247, 241, 229, 0.94) 100%
+    );
   color: #f8f3e8;
 
   html[data-theme="light"] & {
     background:
-      radial-gradient(circle at 50% 10%, rgba(215, 169, 79, 0.24), transparent 18rem),
-      radial-gradient(circle at 48% 28%, rgba(47, 125, 92, 0.16), transparent 24rem),
-      linear-gradient(180deg, rgba(24, 51, 39, 0.98) 0%, rgba(42, 78, 60, 0.93) 46%, rgba(251, 250, 246, 0.96) 100%);
+      radial-gradient(
+        circle at 50% 10%,
+        rgba(215, 169, 79, 0.24),
+        transparent 18rem
+      ),
+      radial-gradient(
+        circle at 48% 28%,
+        rgba(47, 125, 92, 0.16),
+        transparent 24rem
+      ),
+      linear-gradient(
+        180deg,
+        rgba(24, 51, 39, 0.98) 0%,
+        rgba(42, 78, 60, 0.93) 46%,
+        rgba(251, 250, 246, 0.96) 100%
+      );
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
@@ -333,10 +391,10 @@ const PhaseLabel = styled.p`
 const H1 = styled.h1`
   margin: 0;
   max-width: 820px;
-  font-size: clamp(3.6rem, 9vw, 8.8rem);
+  font-size: clamp(5rem, 5vw, 9.8rem);
   line-height: 0.82;
-  letter-spacing: -0.075em;
-  text-wrap: balance;
+  letter-spacing: 0.005em;
+  text-wrap: "balance";
 `;
 
 const Lead = styled.p`
@@ -415,8 +473,21 @@ const Orb = styled.div`
   aspect-ratio: 1;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 42% 35%, rgba(255, 248, 224, 0.95) 0 9%, rgba(233, 196, 106, 0.76) 12%, rgba(120, 195, 156, 0.42) 32%, rgba(25, 70, 52, 0.16) 58%, transparent 70%),
-    conic-gradient(from 140deg, rgba(233, 196, 106, 0.18), rgba(120, 195, 156, 0.3), rgba(255, 255, 255, 0.08), rgba(233, 196, 106, 0.18));
+    radial-gradient(
+      circle at 42% 35%,
+      rgba(255, 248, 224, 0.95) 0 9%,
+      rgba(233, 196, 106, 0.76) 12%,
+      rgba(120, 195, 156, 0.42) 32%,
+      rgba(25, 70, 52, 0.16) 58%,
+      transparent 70%
+    ),
+    conic-gradient(
+      from 140deg,
+      rgba(233, 196, 106, 0.18),
+      rgba(120, 195, 156, 0.3),
+      rgba(255, 255, 255, 0.08),
+      rgba(233, 196, 106, 0.18)
+    );
   box-shadow:
     0 0 90px rgba(120, 195, 156, 0.3),
     inset 0 0 80px rgba(255, 255, 255, 0.1);
@@ -447,7 +518,14 @@ const BrainHalo = styled.div`
   aspect-ratio: 1;
   border-radius: 50%;
   background:
-    conic-gradient(from 120deg, transparent, rgba(233, 196, 106, 0.28), transparent, rgba(120, 195, 156, 0.3), transparent),
+    conic-gradient(
+      from 120deg,
+      transparent,
+      rgba(233, 196, 106, 0.28),
+      transparent,
+      rgba(120, 195, 156, 0.3),
+      transparent
+    ),
     radial-gradient(circle, rgba(255, 248, 224, 0.2), transparent 60%);
   filter: blur(0.4px);
   opacity: 0.9;
@@ -462,9 +540,19 @@ const BrainCard = styled.div`
   place-items: center;
   border-radius: 44% 56% 50% 50%;
   background:
-    radial-gradient(circle at 50% 42%, rgba(255, 248, 224, 0.2), transparent 34%),
-    radial-gradient(circle at 42% 50%, rgba(120, 195, 156, 0.18), transparent 48%);
-  box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.08), 0 28px 110px rgba(120, 195, 156, 0.28);
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(255, 248, 224, 0.2),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 42% 50%,
+      rgba(120, 195, 156, 0.18),
+      transparent 48%
+    );
+  box-shadow:
+    inset 0 0 80px rgba(255, 255, 255, 0.08),
+    0 28px 110px rgba(120, 195, 156, 0.28);
   animation: ${breathe} 7.2s ease-in-out infinite;
 
   &::before,
@@ -592,8 +680,10 @@ const Dot = styled.a`
   height: 34px;
   border-radius: ${theme.radii.pill};
   border: 1px solid rgba(255, 255, 255, 0.18);
-  background: ${({ $active }) => ($active ? "rgba(233, 196, 106, 0.92)" : "rgba(255, 255, 255, 0.08)")};
-  color: ${({ $active }) => ($active ? "#112117" : "rgba(255, 255, 255, 0.74)")};
+  background: ${({ $active }) =>
+    $active ? "rgba(233, 196, 106, 0.92)" : "rgba(255, 255, 255, 0.08)"};
+  color: ${({ $active }) =>
+    $active ? "#112117" : "rgba(255, 255, 255, 0.74)"};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -713,7 +803,8 @@ const PhaseHeading = styled.h2`
 
 const PhaseBody = styled.p`
   margin: 22px 0 0;
-  color: ${({ $dark }) => ($dark ? "rgba(248, 243, 232, 0.72)" : theme.colors.muted)};
+  color: ${({ $dark }) =>
+    $dark ? "rgba(248, 243, 232, 0.72)" : theme.colors.muted};
   font-size: clamp(1rem, 1.8vw, 1.18rem);
   line-height: 1.8;
 `;
@@ -737,7 +828,6 @@ const GlassPanel = styled.div`
   backdrop-filter: blur(20px);
 `;
 
-
 const CarouselSection = styled.section`
   position: relative;
   max-width: 1220px;
@@ -752,8 +842,16 @@ const CarouselShell = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: clamp(28px, 5vw, 54px);
   background:
-    radial-gradient(circle at 20% 10%, rgba(233, 196, 106, 0.24), transparent 24rem),
-    radial-gradient(circle at 82% 22%, rgba(120, 195, 156, 0.22), transparent 26rem),
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(233, 196, 106, 0.24),
+      transparent 24rem
+    ),
+    radial-gradient(
+      circle at 82% 22%,
+      rgba(120, 195, 156, 0.22),
+      transparent 26rem
+    ),
     rgba(255, 255, 255, 0.075);
   box-shadow: 0 34px 110px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(24px);
@@ -809,8 +907,11 @@ const Slide = styled.div`
   display: grid;
   place-items: center;
   opacity: ${({ $active }) => ($active ? 1 : 0)};
-  transform: ${({ $active }) => ($active ? "scale(1) translateY(0)" : "scale(0.96) translateY(18px)")};
-  transition: opacity 700ms ease, transform 800ms cubic-bezier(.2,.8,.2,1);
+  transform: ${({ $active }) =>
+    $active ? "scale(1) translateY(0)" : "scale(0.96) translateY(18px)"};
+  transition:
+    opacity 700ms ease,
+    transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: ${({ $active }) => ($active ? "auto" : "none")};
 `;
 
@@ -818,11 +919,15 @@ const SlideImage = styled.div`
   width: min(100%, 590px);
   aspect-ratio: 4 / 5;
   border-radius: clamp(26px, 5vw, 48px);
-  background:
-    ${({ $src }) => ($src ? `linear-gradient(180deg, rgba(6, 16, 11, 0.08), rgba(6, 16, 11, 0.58)), url(${$src})` : "radial-gradient(circle at 34% 26%, rgba(255, 248, 224, 0.84), transparent 10rem), radial-gradient(circle at 66% 62%, rgba(120, 195, 156, 0.55), transparent 13rem), linear-gradient(145deg, rgba(233, 196, 106, 0.3), rgba(19, 48, 35, 0.76))")};
+  background: ${({ $src }) =>
+    $src
+      ? `linear-gradient(180deg, rgba(6, 16, 11, 0.08), rgba(6, 16, 11, 0.58)), url(${$src})`
+      : "radial-gradient(circle at 34% 26%, rgba(255, 248, 224, 0.84), transparent 10rem), radial-gradient(circle at 66% 62%, rgba(120, 195, 156, 0.55), transparent 13rem), linear-gradient(145deg, rgba(233, 196, 106, 0.3), rgba(19, 48, 35, 0.76))"};
   background-size: cover;
   background-position: center;
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(255,255,255,0.14);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
   animation: ${slowPan} 12s ease-in-out infinite;
 `;
 
@@ -866,8 +971,10 @@ const CarouselButton = styled.button`
   padding: 0 16px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: ${theme.radii.pill};
-  color: ${({ $active }) => ($active ? "#132117" : "rgba(248, 243, 232, 0.78)")};
-  background: ${({ $active }) => ($active ? "#e9c46a" : "rgba(255, 255, 255, 0.08)")};
+  color: ${({ $active }) =>
+    $active ? "#132117" : "rgba(248, 243, 232, 0.78)"};
+  background: ${({ $active }) =>
+    $active ? "#e9c46a" : "rgba(255, 255, 255, 0.08)"};
   font-weight: 900;
   cursor: pointer;
   transition: 220ms ease;
@@ -875,7 +982,8 @@ const CarouselButton = styled.button`
   &:hover,
   &:focus-visible {
     transform: translateY(-2px);
-    background: ${({ $active }) => ($active ? "#f2d27c" : "rgba(255, 255, 255, 0.14)")};
+    background: ${({ $active }) =>
+      $active ? "#f2d27c" : "rgba(255, 255, 255, 0.14)"};
     outline: none;
   }
 `;
@@ -978,12 +1086,25 @@ function IntroGate({ locale }) {
   if (!visible) return null;
 
   return (
-    <IntroOverlay role="dialog" aria-label={locale === "ka" ? "MindBody Roots შესავალი" : "MindBody Roots intro"}>
+    <IntroOverlay
+      role="dialog"
+      aria-label={
+        locale === "ka" ? "MindBody Roots შესავალი" : "MindBody Roots intro"
+      }
+    >
       <IntroButton type="button" onClick={enter}>
-        <Microcopy>{locale === "ka" ? "იტვირთება 5 ფაზა" : "Loading 5 phases"}</Microcopy>
+        <Microcopy>
+          {locale === "ka" ? "იტვირთება 5 ფაზა" : "Loading 5 phases"}
+        </Microcopy>
         <SeedMark aria-hidden="true" />
-        <Microcopy>{locale === "ka" ? "დააკლიკე შესასვლელად" : "Click to enter"}</Microcopy>
-        <Microcopy>{locale === "ka" ? "ყურსასმენები სურვილისამებრ" : "Headphones optional"}</Microcopy>
+        <Microcopy>
+          {locale === "ka" ? "დააკლიკე შესასვლელად" : "Click to enter"}
+        </Microcopy>
+        <Microcopy>
+          {locale === "ka"
+            ? "ყურსასმენები სურვილისამებრ"
+            : "Headphones optional"}
+        </Microcopy>
       </IntroButton>
     </IntroOverlay>
   );
@@ -993,8 +1114,15 @@ function PhaseProgress({ phases, activeKey }) {
   return (
     <Progress aria-label="Homepage phases">
       {phases.map((phase, index) => (
-        <Dot key={phase.key} href={`#${phase.key}`} $active={activeKey === phase.key} aria-label={`Go to ${phase.label}`}>
-          {activeKey === phase.key ? phase.label : `${String(index + 1).padStart(2, "0")}` }
+        <Dot
+          key={phase.key}
+          href={`#${phase.key}`}
+          $active={activeKey === phase.key}
+          aria-label={`Go to ${phase.label}`}
+        >
+          {activeKey === phase.key
+            ? phase.label
+            : `${String(index + 1).padStart(2, "0")}`}
         </Dot>
       ))}
     </Progress>
@@ -1015,20 +1143,45 @@ function RootLines() {
   );
 }
 
-
 function BrainVisual({ locale }) {
   return (
     <>
       <Orb aria-hidden="true" />
       <BrainHalo aria-hidden="true" />
       <BrainCard>
-        <BrainSvg viewBox="0 0 420 420" role="img" aria-label={locale === "ka" ? "მშვიდი ადამიანის ტვინის ანიმაცია" : "Calm animated human brain"}>
-          <path className="brain-fill" d="M205 96c-50-34-116 2-116 67 0 16 4 29 11 41-20 16-24 49-7 71 11 14 28 22 46 21 10 31 41 51 75 43 18 21 53 20 72-1 45 6 81-27 78-69 24-20 24-61 0-82 9-43-27-87-73-82-18-25-58-29-86-9Z" />
-          <path className="neural warm" d="M136 180c30-42 73-43 102-9 20 24 50 24 77 5" />
-          <path className="neural cool" d="M126 246c28-12 55-8 78 14 28 28 65 28 96 4" />
-          <path className="neural" d="M207 122c-7 48-2 82 18 112 16 24 18 49 6 80" />
-          <path className="neural warm" d="M166 302c14-35 40-52 78-50 34 1 57-14 69-43" />
-          <path className="neural cool" d="M118 212c35 8 63 0 83-24 19-22 47-30 88-22" />
+        <BrainSvg
+          viewBox="0 0 420 420"
+          role="img"
+          aria-label={
+            locale === "ka"
+              ? "მშვიდი ადამიანის ტვინის ანიმაცია"
+              : "Calm animated human brain"
+          }
+        >
+          <path
+            className="brain-fill"
+            d="M205 96c-50-34-116 2-116 67 0 16 4 29 11 41-20 16-24 49-7 71 11 14 28 22 46 21 10 31 41 51 75 43 18 21 53 20 72-1 45 6 81-27 78-69 24-20 24-61 0-82 9-43-27-87-73-82-18-25-58-29-86-9Z"
+          />
+          <path
+            className="neural warm"
+            d="M136 180c30-42 73-43 102-9 20 24 50 24 77 5"
+          />
+          <path
+            className="neural cool"
+            d="M126 246c28-12 55-8 78 14 28 28 65 28 96 4"
+          />
+          <path
+            className="neural"
+            d="M207 122c-7 48-2 82 18 112 16 24 18 49 6 80"
+          />
+          <path
+            className="neural warm"
+            d="M166 302c14-35 40-52 78-50 34 1 57-14 69-43"
+          />
+          <path
+            className="neural cool"
+            d="M118 212c35 8 63 0 83-24 19-22 47-30 88-22"
+          />
           <circle cx="136" cy="180" r="5" />
           <circle cx="238" cy="171" r="5" style={{ animationDelay: "-1s" }} />
           <circle cx="315" cy="176" r="5" style={{ animationDelay: "-2s" }} />
@@ -1037,7 +1190,9 @@ function BrainVisual({ locale }) {
         </BrainSvg>
       </BrainCard>
       <RootLines />
-      <BrainCaption>{locale === "ka" ? "ნელა • თბილად • ცოცხლად" : "Slow • warm • alive"}</BrainCaption>
+      <BrainCaption>
+        {locale === "ka" ? "ნელა • თბილად • ცოცხლად" : "Slow • warm • alive"}
+      </BrainCaption>
     </>
   );
 }
@@ -1047,7 +1202,8 @@ function buildCarouselSlides(homePage, locale) {
     homePage.hero?.media
       ? {
           src: homePage.hero.media.url,
-          alt: homePage.hero.media.alternativeText || "MindBody Roots hero image",
+          alt:
+            homePage.hero.media.alternativeText || "MindBody Roots hero image",
           title: homePage.hero.title,
           body: homePage.hero.lead,
         }
@@ -1056,7 +1212,10 @@ function buildCarouselSlides(homePage, locale) {
       post.coverImage
         ? {
             src: post.coverImage.url,
-            alt: post.coverImage.alternativeText || localize(post.title, locale) || "MindBody Roots article image",
+            alt:
+              post.coverImage.alternativeText ||
+              localize(post.title, locale) ||
+              "MindBody Roots article image",
             title: post.title,
             body: post.excerpt,
           }
@@ -1066,7 +1225,10 @@ function buildCarouselSlides(homePage, locale) {
       product.image
         ? {
             src: product.image.url,
-            alt: product.image.alternativeText || localize(product.title, locale) || "MindBody Roots recommendation image",
+            alt:
+              product.image.alternativeText ||
+              localize(product.title, locale) ||
+              "MindBody Roots recommendation image",
             title: product.title,
             body: product.description,
           }
@@ -1075,7 +1237,9 @@ function buildCarouselSlides(homePage, locale) {
     homePage.promoVideo?.poster
       ? {
           src: homePage.promoVideo.poster.url,
-          alt: homePage.promoVideo.poster.alternativeText || "MindBody Roots video poster",
+          alt:
+            homePage.promoVideo.poster.alternativeText ||
+            "MindBody Roots video poster",
           title: homePage.promoVideo.title,
           body: homePage.promoVideo.body,
         }
@@ -1090,7 +1254,8 @@ function ImageCarousel({ slides, locale }) {
 
   useEffect(() => {
     if (slides.length < 2) return undefined;
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches)
+      return undefined;
     const timer = window.setInterval(() => {
       setActive((index) => (index + 1) % slides.length);
     }, 6200);
@@ -1100,38 +1265,92 @@ function ImageCarousel({ slides, locale }) {
   const activeSlide = slides[active] || slides[0];
 
   return (
-    <CarouselSection id="gallery" aria-label={locale === "ka" ? "მშვიდი სურათების კარუსელი" : "Calming image carousel"}>
+    <CarouselSection
+      id="gallery"
+      aria-label={
+        locale === "ka" ? "მშვიდი სურათების კარუსელი" : "Calming image carousel"
+      }
+    >
       <CarouselShell>
         <CarouselInner>
           <CarouselCopy>
-            <PhaseNumber>{locale === "ka" ? "ვიზუალური სუნთქვა" : "Visual breath"}</PhaseNumber>
-            <h2>{locale === "ka" ? "სურათები, რომლებიც ნერვულ სისტემას ამშვიდებს." : "Images that help the nervous system settle."}</h2>
+            <PhaseNumber>
+              {locale === "ka" ? "ვიზუალური სუნთქვა" : "Visual breath"}
+            </PhaseNumber>
+            <h2>
+              {locale === "ka"
+                ? "სურათები, რომლებიც ნერვულ სისტემას ამშვიდებს."
+                : "Images that help the nervous system settle."}
+            </h2>
             <p>
               {locale === "ka"
                 ? "კარუსელი ავტომატურად გამოიყენებს Strapi-ში ატვირთულ hero, blog, product ან video poster სურათებს. მანამდე ჩანს რბილი fallback ვიზუალები."
                 : "This carousel automatically uses images from Strapi hero media, blog covers, product images, and video posters. Until then, soft fallback visuals keep the homepage alive."}
             </p>
-            <CarouselControls aria-label={locale === "ka" ? "კარუსელის კონტროლები" : "Carousel controls"}>
+            <CarouselControls
+              aria-label={
+                locale === "ka" ? "კარუსელის კონტროლები" : "Carousel controls"
+              }
+            >
               {slides.map((slide, index) => (
-                <CarouselButton key={`${slide.alt}-${index}`} type="button" $active={index === active} onClick={() => setActive(index)} aria-label={`${locale === "ka" ? "სურათი" : "Slide"} ${index + 1}: ${localize(slide.title, locale) || slide.alt}`}>
+                <CarouselButton
+                  key={`${slide.alt}-${index}`}
+                  type="button"
+                  $active={index === active}
+                  onClick={() => setActive(index)}
+                  aria-label={`${locale === "ka" ? "სურათი" : "Slide"} ${index + 1}: ${localize(slide.title, locale) || slide.alt}`}
+                >
                   {String(index + 1).padStart(2, "0")}
                 </CarouselButton>
               ))}
             </CarouselControls>
-            <CalmSignals aria-label={locale === "ka" ? "სიმშვიდის დიზაინის ნიშნები" : "Calming design signals"}>
-              <span><strong>{locale === "ka" ? "ნელი" : "Slow"}</strong>{locale === "ka" ? "სუნთქვის ტემპი" : "breathing pace"}</span>
-              <span><strong>{locale === "ka" ? "თბილი" : "Warm"}</strong>{locale === "ka" ? "ოქროსფერი სინათლე" : "golden light"}</span>
-              <span><strong>{locale === "ka" ? "რბილი" : "Soft"}</strong>{locale === "ka" ? "მრგვალი ფორმები" : "rounded forms"}</span>
-              <span><strong>{locale === "ka" ? "ცხადი" : "Clear"}</strong>{locale === "ka" ? "მცირე ნაბიჯები" : "small next steps"}</span>
+            <CalmSignals
+              aria-label={
+                locale === "ka"
+                  ? "სიმშვიდის დიზაინის ნიშნები"
+                  : "Calming design signals"
+              }
+            >
+              <span>
+                <strong>{locale === "ka" ? "ნელი" : "Slow"}</strong>
+                {locale === "ka" ? "სუნთქვის ტემპი" : "breathing pace"}
+              </span>
+              <span>
+                <strong>{locale === "ka" ? "თბილი" : "Warm"}</strong>
+                {locale === "ka" ? "ოქროსფერი სინათლე" : "golden light"}
+              </span>
+              <span>
+                <strong>{locale === "ka" ? "რბილი" : "Soft"}</strong>
+                {locale === "ka" ? "მრგვალი ფორმები" : "rounded forms"}
+              </span>
+              <span>
+                <strong>{locale === "ka" ? "ცხადი" : "Clear"}</strong>
+                {locale === "ka" ? "მცირე ნაბიჯები" : "small next steps"}
+              </span>
             </CalmSignals>
           </CarouselCopy>
           <CarouselStage>
             {slides.map((slide, index) => (
-              <Slide key={`${slide.alt}-${index}`} $active={index === active} aria-hidden={index !== active}>
-                <SlideImage $src={slide.src} role="img" aria-label={slide.alt} />
+              <Slide
+                key={`${slide.alt}-${index}`}
+                $active={index === active}
+                aria-hidden={index !== active}
+              >
+                <SlideImage
+                  $src={slide.src}
+                  role="img"
+                  aria-label={slide.alt}
+                />
                 <SlideBadge>
-                  <strong>{localize(slide.title, locale) || activeSlide.alt}</strong>
-                  <span>{localize(slide.body, locale) || (locale === "ka" ? "დაამატე ფოტოები Strapi-ში ან fallbackCarouselSlides-ში." : "Add pictures in Strapi or in fallbackCarouselSlides.")}</span>
+                  <strong>
+                    {localize(slide.title, locale) || activeSlide.alt}
+                  </strong>
+                  <span>
+                    {localize(slide.body, locale) ||
+                      (locale === "ka"
+                        ? "დაამატე ფოტოები Strapi-ში ან fallbackCarouselSlides-ში."
+                        : "Add pictures in Strapi or in fallbackCarouselSlides.")}
+                  </span>
                 </SlideBadge>
               </Slide>
             ))}
@@ -1151,15 +1370,25 @@ export default function ImmersiveHome() {
   const featured = homePage.featuredArticlesSection;
   const tools = homePage.recommendationsSection;
   const rawHeroTitle = localize(hero.title, locale) || phases[0].headline;
-  const heroTitle = locale === "en" && rawHeroTitle === "Be Friend of your mind." ? "Befriend your mind." : rawHeroTitle;
+  const heroTitle =
+    locale === "en" && rawHeroTitle === "Be Friend of your mind."
+      ? "Befriend your mind."
+      : rawHeroTitle;
   const heroLead = localize(hero.lead, locale) || phases[0].body;
   const badge = localize(hero.badge, locale) || phases[0].eyebrow;
   const primaryLabel = localize(hero.primaryLabel, locale) || phases[0].cta;
-  const secondaryLabel = localize(hero.secondaryLabel, locale) || (locale === "ka" ? "სტატიები" : "Read the blog");
-  const carouselSlides = useMemo(() => buildCarouselSlides(homePage, locale), [homePage, locale]);
+  const secondaryLabel =
+    localize(hero.secondaryLabel, locale) ||
+    (locale === "ka" ? "სტატიები" : "Read the blog");
+  const carouselSlides = useMemo(
+    () => buildCarouselSlides(homePage, locale),
+    [homePage, locale],
+  );
 
   useEffect(() => {
-    const targets = phases.map((phase) => document.getElementById(phase.key)).filter(Boolean);
+    const targets = phases
+      .map((phase) => document.getElementById(phase.key))
+      .filter(Boolean);
     if (!targets.length) return undefined;
 
     const observer = new IntersectionObserver(
@@ -1186,19 +1415,31 @@ export default function ImmersiveHome() {
           <H1>{heroTitle}</H1>
           <Lead>{heroLead}</Lead>
           <Actions>
-            <PrimaryAction href={hero.primaryUrl || "#listen"}>{primaryLabel}</PrimaryAction>
-            <SecondaryAction href={hero.secondaryUrl || "/blog"}>{secondaryLabel}</SecondaryAction>
+            <PrimaryAction href={hero.primaryUrl || "#listen"}>
+              {primaryLabel}
+            </PrimaryAction>
+            <SecondaryAction href={hero.secondaryUrl || "/blog"}>
+              {secondaryLabel}
+            </SecondaryAction>
           </Actions>
         </div>
         <VisualStage>
           <BrainVisual locale={locale} />
         </VisualStage>
-        <ScrollPrompt href="#listen">{locale === "ka" ? "ჩამოსქროლე" : "Scroll to discover"}</ScrollPrompt>
+        <ScrollPrompt href="#listen">
+          {locale === "ka" ? "ჩამოსქროლე" : "Scroll to discover"}
+        </ScrollPrompt>
         <TrustBadge href="/about">
           <TrustIcon>✦</TrustIcon>
           <TrustText>
-            <strong>{locale === "ka" ? "მშვიდი 5-ფაზიანი გზა" : "A calm 5-phase path"}</strong>
-            <small>{locale === "ka" ? "გონება • სხეული • ფესვები" : "Mind • Body • Roots"}</small>
+            <strong>
+              {locale === "ka" ? "მშვიდი 5-ფაზიანი გზა" : "A calm 5-phase path"}
+            </strong>
+            <small>
+              {locale === "ka"
+                ? "გონება • სხეული • ფესვები"
+                : "Mind • Body • Roots"}
+            </small>
           </TrustText>
         </TrustBadge>
       </Hero>
@@ -1214,11 +1455,17 @@ export default function ImmersiveHome() {
             <PhaseHeading>{phases[1].headline}</PhaseHeading>
             <PhaseBody $dark>{phases[1].body}</PhaseBody>
             <Actions>
-              <PrimaryAction href={phases[1].href}>{phases[1].cta}</PrimaryAction>
+              <PrimaryAction href={phases[1].href}>
+                {phases[1].cta}
+              </PrimaryAction>
             </Actions>
           </div>
           <GlassPanel>
-            {homePage.spotlightQuote ? <QuoteCard quote={homePage.spotlightQuote} /> : <DisclaimerNotice />}
+            {homePage.spotlightQuote ? (
+              <QuoteCard quote={homePage.spotlightQuote} />
+            ) : (
+              <DisclaimerNotice />
+            )}
           </GlassPanel>
         </PhaseGrid>
       </PhaseSection>
@@ -1238,23 +1485,42 @@ export default function ImmersiveHome() {
 
       <PhaseSection id="restore">
         <div id="articles">
-          <PhaseNumber>{localize(featured.eyebrow, locale) || phases[3].eyebrow}</PhaseNumber>
-          <PhaseHeading>{localize(featured.title, locale) || phases[3].headline}</PhaseHeading>
-          <PhaseBody>{localize(featured.body, locale) || phases[3].body}</PhaseBody>
+          <PhaseNumber>
+            {localize(featured.eyebrow, locale) || phases[3].eyebrow}
+          </PhaseNumber>
+          <PhaseHeading>
+            {localize(featured.title, locale) || phases[3].headline}
+          </PhaseHeading>
+          <PhaseBody>
+            {localize(featured.body, locale) || phases[3].body}
+          </PhaseBody>
         </div>
         <ResourceGrid style={{ marginTop: 34 }}>
-          {homePage.featuredArticles.map((post) => <BlogCard key={post.slug} post={post} />)}
+          {homePage.featuredArticles.map((post) => (
+            <BlogCard key={post.slug} post={post} />
+          ))}
         </ResourceGrid>
       </PhaseSection>
 
       <PhaseSection id="begin">
         <div id="tools">
-          <PhaseNumber>{localize(tools.eyebrow, locale) || phases[4].eyebrow}</PhaseNumber>
-          <PhaseHeading>{localize(tools.title, locale) || phases[4].headline}</PhaseHeading>
-          <PhaseBody>{localize(tools.body, locale) || phases[4].body}</PhaseBody>
+          <PhaseNumber>
+            {localize(tools.eyebrow, locale) || phases[4].eyebrow}
+          </PhaseNumber>
+          <PhaseHeading>
+            {localize(tools.title, locale) || phases[4].headline}
+          </PhaseHeading>
+          <PhaseBody>
+            {localize(tools.body, locale) || phases[4].body}
+          </PhaseBody>
         </div>
         <ResourceGrid id="resources" style={{ marginTop: 34 }}>
-          {homePage.featuredProducts.map((product) => <ProductCard key={product.documentId || product.url} product={product} />)}
+          {homePage.featuredProducts.map((product) => (
+            <ProductCard
+              key={product.documentId || product.url}
+              product={product}
+            />
+          ))}
         </ResourceGrid>
       </PhaseSection>
 
